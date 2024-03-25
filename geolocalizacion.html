@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MAXI UBICATION</title>
+        <link rel="stylesheet" href="f09.css" type="text/css" media="screen" />
+        <script>
+            function geolocalizame() {
+                var g = document.getElementById("ubicacion");
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(mostrarUbicacion);
+                    console.log('Entre en funcion Geolocalizame()');
+                } else {
+                    g.innerHTML = "<b>Su navegador no soporta Geolocalizaci&oacute;n. :( <b>";
+                    console.log('Entre en NO SOPORTA GEOLOCALIZACION');
+                }
+            }
+            function mostrarUbicacion(position) {
+                var g = document.getElementById("ubicacion");
+                console.log('Entre en funcion mostrarUbicacion()');
+                g.innerHTML = 'Latitud: ' + position.coords.latitude + '<br>' + 'Longitud: ' + position.coords.longitude;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Detectando nuestra posici&oacute;n</h1>
+        <p>Presionando el siguiente bot&oacute;n, el navegador web detectar&aacute; su posici&oacute;n actual.</p>
+        <div align="center">
+            <button class="boton-seleccion" id="boton-seleccion" onclick="geolocalizame()">Mi posici&oacute;n</button>
+            <br>
+            <p id="ubicacion"> </p>
+            <br> </div>
+    </body>
+</html>
